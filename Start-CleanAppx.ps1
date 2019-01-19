@@ -1,8 +1,9 @@
-  ## start cleaning the appxPackages
+## start cleaning the appxPackages
     Function Start-CleanAppx{
      Write-Host "Windows AppxPackage Cleanup is running.                                                                  " -NoNewline -ForegroundColor Green
     Try{
-    Get-AppxPackage *Microsoft.3dbuilder* | Remove-AppxPackage
+<#    
+Get-AppxPackage *Microsoft.3dbuilder* | Remove-AppxPackage
 Get-AppxPackage *AdobeSystemsIncorporated.AdobePhotoshopExpress* | Remove-AppxPackage
 Get-AppxPackage *Microsoft.WindowsAlarms* | Remove-AppxPackage
 Get-AppxPackage *Microsoft.Asphalt8Airborne* | Remove-AppxPackage
@@ -53,24 +54,72 @@ Get-AppxPackage *XboxOneSmartGlass* | Remove-AppxPackage
 Get-AppxPackage *Microsoft.XboxSpeechToTextOverlay* | Remove-AppxPackage
 Get-AppxPackage *Microsoft.XboxIdentityProvider* | Remove-AppxPackage
 Get-AppxPackage *Microsoft.XboxGameOverlay* | Remove-AppxPackage
+#>
 
 
-
-<# New method that should be implemented
-            $AppList = @(
-             "*Microsoft.3dbuilder*"
-             "*App2*"
-             "*Etc*"
+# New method that should be implemented
+$AppList = @(
+"*Microsoft.3dbuilder* | Remove-AppxPackage",
+"*AdobeSystemsIncorporated.AdobePhotoshopExpress*",
+"*Microsoft.WindowsAlarms*",
+"*Microsoft.Asphalt8Airborne*",
+"*microsoft.windowscommunicationsapps*",
+"*Microsoft.WindowsCamera*",
+"*king.com.CandyCrushSodaSaga*",
+"*Microsoft.DrawboardPDF*",
+"*Facebook*",
+"*BethesdaSoftworks.FalloutShelter*",
+"*FarmVille2CountryEscape*",
+"*Microsoft.WindowsFeedbackHub*",
+"*Microsoft.GetHelp*",
+"*Microsoft.Getstarted*",
+"*Microsoft.ZuneMusic*",
+"*Microsoft.WindowsMaps*",
+"*Microsoft.Messaging*",
+"*Microsoft.Wallet*",
+"*Microsoft.MicrosoftSolitaireCollection*",
+"*Todos*",
+"*ConnectivityStore*",
+"*MinecraftUWP*",
+"*Microsoft.OneConnect*",
+"*Microsoft.BingFinance*",
+"*Microsoft.ZuneVideo*",
+"*Microsoft.BingNews*",
+"*Microsoft.MicrosoftOfficeHub*",
+"*Netflix*",
+"*OneNote*",
+"*Microsoft.MSPaint*",
+"*PandoraMediaInc*",
+"*Microsoft.People*",
+"*CommsPhone*",
+"*windowsphone*",
+"*Microsoft.Print3D*",
+"*flaregamesGmbH.RoyalRevolt2*",
+"*WindowsScan*",
+"*AutodeskSketchBook*",
+"*Microsoft.SkypeApp*",
+"*bingsports*",
+"*Office.Sway*",
+"*Microsoft.Getstarted*",
+"*Twitter*",
+"*Microsoft3DViewer*",
+"*Microsoft.WindowsSoundRecorder*",
+"*Microsoft.BingWeather*",
+"*Microsoft.XboxApp*",
+"*XboxOneSmartGlass*",
+"*Microsoft.XboxSpeechToTextOverlay*",
+"*Microsoft.XboxIdentityProvider*",
+"*Microsoft.XboxGameOverlay*"
 )
 
 foreach ($App in $AppList) {
-    Get-AppxPackage -Name $App | Remove-AppxPackage -ErrorAction SilentlyContinue
+    Get-AppxPackage -Name $App | Remove-AppxPackage -allusers -ErrorAction SilentlyContinue
 }
-#>
 
-    }Catch [System.Exception]{
-            Write-host "Some apps could not be uninstalled" -ForegroundColor Red -NoNewline
-            Write-host "[ERROR]" -ForegroundColor Red -BackgroundColor black
-        }
 
-    } Start-CleanAppx 
+  } Catch [System.Exception]{
+      Write-host "Some apps could not be uninstalled" -ForegroundColor Red -NoNewline
+      Write-host "[ERROR]" -ForegroundColor Red -BackgroundColor black
+  }
+
+} Start-CleanAppx 
