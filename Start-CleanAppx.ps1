@@ -52,6 +52,12 @@
 "*XboxOneSmartGlass*",
 "*Microsoft.XboxSpeechToTextOverlay*",
 "*Microsoft.XboxIdentityProvider*",
-"*Microsoft.XboxGameOverlay*" | foreach {Get-AppxPackage $_ | Remove-AppxPackage}
+"*Microsoft.XboxGameOverlay*"
+"*Plex*",
+"*SpotifyMusic*", 
+"*Disney*",
+"*BubbleWitch3Saga*",
+"*MarchofEmpires*"| foreach {Get-AppxPackage -allusers $_ | Remove-AppxPackage }
 
 } Start-CleanAppx 
+#"**"         for copy paste new lines
