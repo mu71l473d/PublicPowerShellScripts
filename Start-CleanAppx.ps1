@@ -60,4 +60,7 @@
 "*MarchofEmpires*"| foreach {Get-AppxPackage -allusers $_ | Remove-AppxPackage }
 
 } Start-CleanAppx 
+
+
+#    Get-AppxPackage | Select Name  # for finding new packages to deleter
 #"**"         for copy paste new lines
