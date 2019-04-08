@@ -7,21 +7,21 @@ if ( $VerbosePreference -ne 'SilentlyContinue' ) {
     Write-Host "$Message" -ForegroundColor 'Green'
   }
 }
+## Writes a verbose output to the screen for user information
+Write-Host "Retriving current disk percent free for comparison once the script has completed.                 " -NoNewline -ForegroundColor Green
 
-
- ## Writes a verbose output to the screen for user information
-    Write-Host "Retriving current disk percent free for comparison once the script has completed.                 " -NoNewline -ForegroundColor Green
-    Write-Host "[DONE]" -ForegroundColor Green -BackgroundColor Black
 
 ## Gathers the amount of disk space used before running the script
-   $Before = Get-WmiObject Win32_LogicalDisk | Where-Object { $_.DriveType -eq "3" } | Select-Object SystemName,
-   @{ Name = "Drive" ; Expression = { ( $_.DeviceID ) } },
-   @{ Name = "Size (GB)" ; Expression = {"{0:N1}" -f ( $_.Size / 1gb)}},
-   @{ Name = "FreeSpace (GB)" ; Expression = {"{0:N1}" -f ( $_.Freespace / 1gb ) } },
-   @{ Name = "PercentFree" ; Expression = {"{0:P1}" -f ( $_.FreeSpace / $_.Size ) } } | Format-Table -AutoSize | Out-String
+$Before = Get-WmiObject Win32_LogicalDisk | Where-Object { $_.DriveType -eq "3" } | Select-Object SystemName,
+@{ Name = "Drive" ; Expression = { ( $_.DeviceID ) } },
+@{ Name = "Size (GB)" ; Expression = {"{0:N1}" -f ( $_.Size / 1gb)}},
+@{ Name = "FreeSpace (GB)" ; Expression = {"{0:N1}" -f ( $_.Freespace / 1gb ) } },
+@{ Name = "PercentFree" ; Expression = {"{0:P1}" -f ( $_.FreeSpace / $_.Size ) } } | Format-Table -AutoSize | Out-String
 
+
+Write-Host "[DONE]" -ForegroundColor Green -BackgroundColor Black
 ## start cleaning the appxPackages
-    Function Start-CleanAppx{
+Function Start-CleanAppx{
 
 Write-Host "Windows AppxPackage Cleanup is running." -NoNewline -ForegroundColor Green
 
@@ -80,6 +80,8 @@ $AppList = @("*Microsoft.3dbuilder*",
 "*SpotifyMusic*", 
 "*Disney*",
 "*BubbleWitch3Saga*",
+"*Fitbit*",
+"*DolbyAccess*",
 "*MarchofEmpires*") | foreach {Get-AppxPackage -allusers $_ | Remove-AppxPackage }
 
 }Start-CleanAppx 
