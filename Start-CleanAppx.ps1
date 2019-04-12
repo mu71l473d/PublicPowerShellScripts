@@ -83,6 +83,7 @@ $AppList = @("*Microsoft.3dbuilder*",
 "*Fitbit*",
 "*DolbyAccess*",
 "*ThumbmunkeysLtd.PhototasticCollage*",
+"*Microsoft.Windows.Cortana*",
 "*MarchofEmpires*") | foreach {Get-AppxPackage -allusers $_ | Remove-AppxPackage }
 
 }Start-CleanAppx 
