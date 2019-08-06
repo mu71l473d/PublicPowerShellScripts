@@ -1,0 +1,3 @@
+﻿$Hamid='Meisjes kijken','Niet opschrijven he!?','Goeie jongen ben jij ook','Klootzakken zijn het. Allemaal!','Platgereden egeltjes','vies stokertje ben jij ook he!','Swaffelen op het bureau van nick','Swaffelaar','Chinatown','Droogkloot ben je ook he!?','nuchtere boer','alles plakt','Heb je weer op mn bureau geswaffeld?','Carbid moesten ze lusten','Jij hebt het goed voor elkaar','Ik heb ook geen flikker aan je','Pisvlek','Hoe lossen we dit op?!','Goeie jongen ben jij he?! Je hebt er alleen geen flikker aan.','Ga je weer lullig doen?','Schrijf dat maar op mn grafsteen.','Ik ga je wel missen','Ik ben moe','...'
+
+Get-Random $Hamid
